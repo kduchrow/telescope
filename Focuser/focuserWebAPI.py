@@ -28,6 +28,6 @@ def set(value):
 def home():
     return Focuser.getstatus(1)
 
-app.run()
+app.run(host= '0.0.0.0')    # startet app und nutzt Host ip
 
 
