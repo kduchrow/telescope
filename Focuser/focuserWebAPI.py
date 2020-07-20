@@ -33,6 +33,10 @@ def init():
     Focuser.init()
     return "inited"
 
+@app.route('/end', methods=['GET'])
+def end():
+    Focuser.end()
+    return "ended"
 
 
 
