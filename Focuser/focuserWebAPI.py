@@ -13,7 +13,7 @@ def do_work(value):
 @app.route('/run', methods=['GET'])
 def run():
     Thread(target=do_work, kwargs={'value': 1}).start()
-    #Focuser.go(1)
+    Focuser.go(1)
     return "run"
 
 @app.route('/stop', methods=['GET'])
@@ -27,6 +27,13 @@ def set(value):
 @app.route('/', methods=['GET'])
 def home():
     return Focuser.getstatus(1)
+
+@app.route('/init', methods=['GET'])
+def init():
+    return Focuser.init()
+
+
+
 
 app.run(host= '0.0.0.0')    # startet app und nutzt Host ip
 

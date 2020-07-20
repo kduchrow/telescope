@@ -9,6 +9,7 @@ class Focuser(object):
     maxsteps = 3500
     started = False
     stopRUN = True
+    initalized = False
 
     # Verwendete Pins des ULN2003A auf die Pins des Rapberry Pi zugeordnet
     StepPins = [6,13,19,26]
@@ -59,7 +60,7 @@ class Focuser(object):
         if not Focuser.started:
             Focuser.started = True
             Focuser.stopRUN = False
-            while not Focuser.stopRUN:
+            while not Focuser.stopRUN and Focuser.stepcounter < Focuser.maxsteps:
                 time.sleep(1)
                 Focuser.stepcounter +=1
 
@@ -70,7 +71,11 @@ class Focuser(object):
 
     @staticmethod
     def getstatus(i):
-        return json.dumps(Focuser.stepcounter)
+        if Focuser.initalized:
+            return json.dumps(Focuser.stepcounter)
+        else:
+            return json.dumps("Failed. Initialise first")
+
 
     ###  Set direction to 1 or 2 for clockwise
     ### Set direction to -1 or -2 for anti-clockwise
