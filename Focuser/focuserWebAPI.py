@@ -30,7 +30,8 @@ def home():
 
 @app.route('/init', methods=['GET'])
 def init():
-    return Focuser.init()
+    Focuser.init()
+    return "inited"
 
 
 
