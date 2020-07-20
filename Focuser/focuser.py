@@ -12,7 +12,7 @@ class Focuser(object):
     initalized = False
 
     # Verwendete Pins des ULN2003A auf die Pins des Rapberry Pi zugeordnet
-    StepPins = [6,13,19,26]
+    StepPins = [4,17,27,22]
 
     # Define advanced sequence
     # as shown in manufacturers datasheet
